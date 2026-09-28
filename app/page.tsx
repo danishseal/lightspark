@@ -4,6 +4,35 @@ import { useEffect, useRef, useState } from "react";
 
 const navigation = ["Home", "Works", "Playground", "About", "Contact"];
 const tickCount = 24;
+const heroPhotos = [
+  "IMG_6715 (1).PNG",
+  "IMG_6716 (1).PNG",
+  "IMG_6717 (1).PNG",
+  "IMG_6718 (1).PNG",
+  "IMG_6719 (1).PNG",
+  "IMG_6720 (1).PNG",
+  "IMG_6721 (1).PNG",
+  "IMG_6724 (1).PNG",
+  "IMG_6725 (1).PNG",
+  "IMG_6726 (1).PNG",
+  "IMG_6751.PNG",
+  "IMG_6752.PNG",
+  "IMG_6753.PNG",
+  "IMG_6754.PNG",
+  "IMG_6755.PNG",
+  "IMG_6756.PNG",
+  "IMG_6758.PNG",
+  "IMG_6759 (1).PNG",
+  "IMG_6760 (1).PNG",
+  "IMG_6761.PNG",
+  "IMG_6762.PNG",
+  "IMG_6763 (1).PNG",
+  "IMG_6764.PNG",
+  "IMG_6765.PNG",
+  "IMG_6773 (1).PNG",
+  "IMG_6784.PNG",
+  "IMG_6788.PNG",
+].map((name) => `/photos/untitled%20folder/${encodeURIComponent(name)}`);
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,11 +47,11 @@ export default function Home() {
 
     const replaceImages = () => {
       document.querySelectorAll<HTMLImageElement>('img[src*="/images/hero-v2-blur"]').forEach((image, index) => {
-        image.src = `/numbered-2/numbered-2/${(index % 12) + 1}.png`;
+        image.src = heroPhotos[index % heroPhotos.length];
         image.srcset = "";
       });
       document.querySelectorAll<HTMLSourceElement>('source[srcset*="/images/hero-v2-blur"]').forEach((source, index) => {
-        source.srcset = `/numbered-2/numbered-2/${(index % 12) + 1}.png`;
+        source.srcset = heroPhotos[index % heroPhotos.length];
       });
     };
 
