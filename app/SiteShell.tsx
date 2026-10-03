@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-const navigation = ["Home", "Litepaper", "Whitepaper", "Status", "Works", "Playground", "About", "Contact"];
-const tickCount = 36;
+const navigation = ["Home", "Litepaper", "Whitepaper", "Status"];
+const tickCount = 20;
 const heroPhotos = [
   "IMG_6715 (1).PNG",
   "IMG_6716 (1).PNG",
@@ -35,10 +35,12 @@ const heroPhotos = [
   "IMG_6788.PNG",
 ].map((name) => `/photos/untitled%20folder/${encodeURIComponent(name)}`);
 
-export default function SiteShell({ page = "home" }: { page?: "home" | "litepaper" | "whitepaper" | "status" }) {
+export default function SiteShell() {
   const router = useRouter();
+  const pathname = usePathname();
+  const page = pathname === "/litepaper" ? "litepaper" : pathname === "/whitepaper" ? "whitepaper" : pathname === "/status" ? "status" : "home";
+  const selectedIndex = page === "litepaper" ? 1 : page === "whitepaper" ? 2 : page === "status" ? 3 : 0;
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(page === "litepaper" ? 1 : page === "whitepaper" ? 2 : page === "status" ? 3 : 0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const navigationRef = useRef<HTMLElement>(null);
 
@@ -104,7 +106,6 @@ export default function SiteShell({ page = "home" }: { page?: "home" | "litepape
               aria-pressed={selectedIndex === index}
               onFocus={() => setHoveredIndex(index)}
               onClick={() => {
-                setSelectedIndex(index);
                 if (item === "Home") router.push("/");
                 if (item === "Litepaper") router.push("/litepaper");
                 if (item === "Whitepaper") router.push("/whitepaper");

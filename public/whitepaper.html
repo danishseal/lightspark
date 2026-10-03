@@ -1,1 +1,227 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Whitepaper | Instance</title><style>@font-face{font-family:NeueBit;src:url('/fonts/NeueBit-Bold.woff') format('woff');font-weight:700;font-display:swap}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#fff;color:#19232b;font-family:Arial,Helvetica,sans-serif}body{overflow:auto}.paper{max-width:1120px;margin:0 auto;padding:145px clamp(24px,5vw,72px) 90px}.paper-header{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:35px}.paper h1{margin:0;font:700 clamp(68px,10vw,126px)/.85 NeueBit,Arial,sans-serif;text-transform:uppercase}.paper-header p{max-width:760px;margin:0;color:#53616d;font-size:clamp(19px,2.2vw,25px);line-height:1.35}.paper-actions{border-top:1px solid #d7e0e6;padding:24px 0}.download{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid #205bda;border-radius:6px;background:#205bda;color:#fff;font-size:14px;font-weight:700;text-decoration:none}.download:hover{background:#1649b9}.download:focus-visible{outline:2px solid #205bda;outline-offset:4px}.paper object{display:block;width:100%;height:min(78vh,980px);min-height:520px;border:1px solid #d7e0e6;border-radius:8px;background:#f7f9fb}.paper object p{padding:24px}@media(max-width:600px){.paper{padding:115px 20px 55px}.paper object{min-height:440px}}</style></head><body><main class="paper"><header class="paper-header"><h1>Whitepaper</h1><p>More than sixty pages: what a curve costs and why it fails an asset with a closing bell, the opcode quote with its proofs, settlement on Solana byte by byte, a security analysis, and a simulated comparison on equal capital.</p></header><div class="paper-actions"><a class="download" href="/whitepaper.pdf" download>↓ &nbsp;Download PDF</a></div><object aria-label="opcode whitepaper" data="/whitepaper.pdf" type="application/pdf"><p>This browser cannot display the PDF inline. <a href="/whitepaper.pdf">Open the PDF</a>.</p></object></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Whitepaper | Instance</title>
+  <style>
+    @font-face{font-family:NeueBit;src:url('/fonts/NeueBit-Bold.woff') format('woff');font-weight:700;font-display:swap}
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:#fff;color:#19232b;font-family:Arial,Helvetica,sans-serif}
+    body{overflow:auto}html{scrollbar-color:#b9c3cb #fff}html::-webkit-scrollbar{width:10px}html::-webkit-scrollbar-track{background:#fff}html::-webkit-scrollbar-thumb{background:#b9c3cb;border:2px solid #fff;border-radius:6px}
+    .paper{max-width:1240px;margin:auto;padding:108px 24px 90px}
+    .paper-header{display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px;margin-bottom:34px}
+    .paper h1{margin:0;font:700 28px/1 NeueBit,Arial,sans-serif;text-transform:uppercase}
+    .paper-header p{max-width:760px;margin:0;font-size:clamp(22px,2.6vw,34px);line-height:1.25;letter-spacing:-.03em}
+    .paper-actions{padding-bottom:24px}
+    .download{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid #d7e0e6;color:#19232b;font-size:12px;text-decoration:none}
+    .download:hover,.viewer button:hover{background:#f2f5f8}
+    a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #205bda;outline-offset:2px}
+    .viewer{height:min(78vh,980px);min-height:520px;border:1px solid #d7e0e6;background:#fff;display:flex;flex-direction:column;overflow:hidden}
+    .viewer-toolbar{min-height:54px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 16px;border-bottom:1px solid #d7e0e6;background:#fff}
+    .viewer-title{font-size:14px;font-weight:600;white-space:nowrap}
+    .viewer-controls{display:flex;align-items:center;gap:7px;font-size:13px}
+    .viewer button{height:32px;min-width:32px;border:1px solid transparent;background:#fff;color:#19232b;cursor:pointer;font:inherit}
+    .viewer input{width:44px;height:30px;border:1px solid #d7e0e6;background:#fff;color:#19232b;text-align:center;font:inherit}
+    .viewer input::-webkit-inner-spin-button,.viewer input::-webkit-outer-spin-button{appearance:none}
+    .viewer-count{color:#687784;white-space:nowrap}
+    .viewer-body{display:flex;min-height:0;flex:1}
+    .viewer-sidebar{width:220px;flex:none;overflow:auto;border-right:1px solid #d7e0e6;background:#fff;padding:16px 12px}
+    .viewer-sidebar button{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;height:auto;margin:0 0 16px;padding:8px;border:1px solid transparent;border-radius:3px;background:#fff;color:#53616d;font-size:12px;cursor:pointer}.viewer-sidebar button canvas{display:block;width:min(100%,124px);height:auto;min-height:130px;box-shadow:0 0 0 1px #e0e5e9;background:#fff}.viewer-sidebar button span{display:block;text-align:center}
+    .viewer-sidebar button[aria-current=true]{background:#e8efff;border-color:#96b4ef;color:#205bda;font-weight:700}
+    .viewer-scroll{flex:1;min-width:0;overflow:auto;background:#fff;scrollbar-color:#b9c3cb #fff}
+    .viewer-sidebar{scrollbar-color:#b9c3cb #fff}
+    .viewer-scroll::-webkit-scrollbar,.viewer-sidebar::-webkit-scrollbar{width:10px;height:10px}
+    .viewer-scroll::-webkit-scrollbar-track,.viewer-sidebar::-webkit-scrollbar-track{background:#fff}
+    .viewer-scroll::-webkit-scrollbar-thumb,.viewer-sidebar::-webkit-scrollbar-thumb{background:#b9c3cb;border:2px solid #fff;border-radius:6px}
+    .pages{display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px}
+    .pdf-page{width:min(100%,794px);aspect-ratio:612/792;flex:none;background:#fff;box-shadow:0 0 0 1px #e2e7eb,0 8px 24px #1d2d3b12;overflow:hidden}
+    .pdf-page canvas{display:block;width:100%;height:auto}
+    .viewer-loading{padding:40px;color:#53616d;text-align:center}
+    @media(max-width:900px){.paper-header{grid-template-columns:1fr;gap:20px}.viewer-sidebar{width:130px}.viewer-sidebar button canvas{min-height:90px}}
+    @media(max-width:600px){.paper{padding:105px 20px 55px}.paper-header p{font-size:24px}.viewer-sidebar,.viewer-title{display:none}.viewer-toolbar{justify-content:center}.viewer{min-height:440px}.pages{padding:12px;gap:14px}}
+  </style>
+</head>
+<body>
+  <main class="paper">
+    <header class="paper-header">
+      <h1>Whitepaper</h1>
+      <p>More than sixty pages: what a curve costs and why it fails an asset with a closing bell, the opcode quote with its proofs, settlement on Solana byte by byte, a security analysis, and a simulated comparison on equal capital.</p>
+    </header>
+    <div class="paper-actions"><a class="download" href="/whitepaper.pdf" download>↓ <span>Download PDF</span></a></div>
+    <section class="viewer" aria-label="Whitepaper PDF viewer">
+      <div class="viewer-toolbar">
+        <span class="viewer-title">opcode — Whitepaper</span>
+        <div class="viewer-controls">
+          <button id="previous" type="button" aria-label="Previous page">‹</button>
+          <input id="page-number" type="number" min="1" value="1" aria-label="Page number">
+          <span class="viewer-count">/ <span id="page-count">…</span></span>
+          <button id="next" type="button" aria-label="Next page">›</button>
+          <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+          <span id="zoom-label">100%</span>
+          <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+        </div>
+      </div>
+      <div class="viewer-body">
+        <nav class="viewer-sidebar" id="page-list" aria-label="Whitepaper pages"></nav>
+        <div class="viewer-scroll" id="viewer-scroll"><div class="pages" id="pages"><p class="viewer-loading">Loading whitepaper…</p></div></div>
+      </div>
+    </section>
+  </main>
+  <script type="module">
+    import * as pdfjs from '/pdfjs/pdf.min.mjs';
+    pdfjs.GlobalWorkerOptions.workerSrc = '/pdfjs/pdf.worker.min.mjs';
+    const pages = document.getElementById('pages');
+    const scroll = document.getElementById('viewer-scroll');
+    const list = document.getElementById('page-list');
+    const pageInput = document.getElementById('page-number');
+    const count = document.getElementById('page-count');
+    const zoomLabel = document.getElementById('zoom-label');
+    let pdf;
+    let zoom = 1;
+    let currentPage = 1;
+    let observer;
+    let thumbObserver;
+    const rendering = new Map();
+    const pageElements = [];
+
+    function setCurrentPage(number) {
+      currentPage = number;
+      pageInput.value = number;
+      for (const button of list.children) button.setAttribute('aria-current', String(Number(button.dataset.page) === number));
+      const active = list.children[number - 1];
+      if (active) {
+        const item = active.getBoundingClientRect();
+        const panel = list.getBoundingClientRect();
+        if (item.top < panel.top) list.scrollTop -= panel.top - item.top + 8;
+        else if (item.bottom > panel.bottom) list.scrollTop += item.bottom - panel.bottom + 8;
+      }
+    }
+
+    function goToPage(number) {
+      if (!pdf) return;
+      const target = Math.max(1, Math.min(pdf.numPages, Number(number) || 1));
+      pageElements[target - 1].scrollIntoView({block:'start',behavior:'smooth'});
+      setCurrentPage(target);
+    }
+
+    async function renderPage(element) {
+      if (!pdf || element.dataset.rendered === String(zoom) || rendering.has(element)) return;
+      const task = (async () => {
+        const page = await pdf.getPage(Number(element.dataset.page));
+        const natural = page.getViewport({scale:1});
+        const cssWidth = element.getBoundingClientRect().width;
+        const viewport = page.getViewport({scale:cssWidth / natural.width});
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        const canvas = element.querySelector('canvas');
+        const context = canvas.getContext('2d', {alpha:false});
+        canvas.width = Math.round(viewport.width * ratio);
+        canvas.height = Math.round(viewport.height * ratio);
+        canvas.style.width = viewport.width + 'px';
+        canvas.style.height = viewport.height + 'px';
+        element.style.height = viewport.height + 'px';
+        await page.render({canvasContext:context,viewport,transform:[ratio,0,0,ratio,0,0]}).promise;
+        element.dataset.rendered = String(zoom);
+      })().catch(error => console.error('PDF page render failed', error)).finally(() => rendering.delete(element));
+      rendering.set(element, task);
+      await task;
+    }
+
+    async function renderThumbnail(button) {
+      if (!pdf || button.dataset.rendered) return;
+      button.dataset.rendered = 'loading';
+      try {
+        const page = await pdf.getPage(Number(button.dataset.page));
+        const natural = page.getViewport({scale:1});
+        const viewport = page.getViewport({scale:124 / natural.width});
+        const canvas = button.querySelector('canvas');
+        const context = canvas.getContext('2d', {alpha:false});
+        canvas.width = Math.round(viewport.width * 1.5);
+        canvas.height = Math.round(viewport.height * 1.5);
+        canvas.style.width = viewport.width + 'px';
+        canvas.style.height = viewport.height + 'px';
+        await page.render({canvasContext:context,viewport,transform:[1.5,0,0,1.5,0,0]}).promise;
+        button.dataset.rendered = 'true';
+      } catch (error) {
+        button.dataset.rendered = '';
+        console.error('PDF thumbnail render failed', error);
+      }
+    }
+
+    function renderVisible() {
+      const root = scroll.getBoundingClientRect();
+      for (const element of pageElements) {
+        const rect = element.getBoundingClientRect();
+        if (rect.bottom > root.top - 600 && rect.top < root.bottom + 600) renderPage(element);
+      }
+    }
+
+    function updateZoom(nextZoom) {
+      zoom = Math.max(.5, Math.min(1.5, nextZoom));
+      zoomLabel.textContent = Math.round(zoom * 100) + '%';
+      for (const element of pageElements) {
+        element.style.width = `min(${Math.round(zoom * 100)}%, ${Math.round(794 * zoom)}px)`;
+        element.style.height = '';
+        element.dataset.rendered = '';
+      }
+      renderVisible();
+    }
+
+    document.getElementById('previous').addEventListener('click', () => goToPage(currentPage - 1));
+    document.getElementById('next').addEventListener('click', () => goToPage(currentPage + 1));
+    document.getElementById('zoom-out').addEventListener('click', () => updateZoom(zoom - .1));
+    document.getElementById('zoom-in').addEventListener('click', () => updateZoom(zoom + .1));
+    pageInput.addEventListener('change', () => goToPage(pageInput.value));
+    scroll.addEventListener('scroll', () => {
+      const root = scroll.getBoundingClientRect();
+      let closest = currentPage, distance = Infinity;
+      for (const element of pageElements) {
+        const d = Math.abs(element.getBoundingClientRect().top - root.top);
+        if (d < distance) { distance = d; closest = Number(element.dataset.page); }
+      }
+      if (closest !== currentPage) setCurrentPage(closest);
+    }, {passive:true});
+
+    try {
+      const bytes = await fetch('/whitepaper-light.pdf').then(response => response.arrayBuffer());
+      pdf = await pdfjs.getDocument({data:bytes}).promise;
+      count.textContent = pdf.numPages;
+      pageInput.max = pdf.numPages;
+      pages.replaceChildren();
+      for (let number = 1; number <= pdf.numPages; number++) {
+        const element = document.createElement('div');
+        element.className = 'pdf-page';
+        element.dataset.page = String(number);
+        element.setAttribute('aria-label', `Page ${number}`);
+        element.appendChild(document.createElement('canvas'));
+        pages.appendChild(element);
+        pageElements.push(element);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.page = String(number);
+        button.setAttribute('aria-label', `Go to page ${number}`);
+        const thumbnail = document.createElement('canvas');
+        thumbnail.setAttribute('aria-hidden', 'true');
+        const caption = document.createElement('span');
+        caption.textContent = String(number);
+        button.append(thumbnail, caption);
+        button.addEventListener('click', () => goToPage(number));
+        list.appendChild(button);
+      }
+      setCurrentPage(1);
+      observer = new IntersectionObserver(entries => {
+        for (const entry of entries) if (entry.isIntersecting) renderPage(entry.target);
+      }, {root:scroll,rootMargin:'600px'});
+      pageElements.forEach(element => observer.observe(element));
+      thumbObserver = new IntersectionObserver(entries => {
+        for (const entry of entries) if (entry.isIntersecting) renderThumbnail(entry.target);
+      }, {root:list,rootMargin:'250px'});
+      for (const button of list.children) thumbObserver.observe(button);
+      renderVisible();
+    } catch (error) {
+      pages.innerHTML = '<p class="viewer-loading">The whitepaper could not load: ' + String(error.message || error) + ' <a href="/whitepaper.pdf">Open the PDF directly</a>.</p>';
+      console.error(error);
+    }
+  </script>
+</body>
+</html>

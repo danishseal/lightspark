@@ -1,5 +1,3 @@
-import SiteShell from "./SiteShell";
-
 export default function Home() {
-  return <SiteShell />;
+  return null;
 }
