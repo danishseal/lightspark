@@ -8,7 +8,7 @@
     @font-face{font-family:NeueBit;src:url('/fonts/NeueBit-Bold.woff') format('woff');font-weight:700;font-display:swap}
     *{box-sizing:border-box}
     html,body{margin:0;min-height:100%;background:#fff;color:#19232b;font-family:Arial,Helvetica,sans-serif}
-    body{overflow:auto}html{scrollbar-color:#b9c3cb #fff}html::-webkit-scrollbar{width:10px}html::-webkit-scrollbar-track{background:#fff}html::-webkit-scrollbar-thumb{background:#b9c3cb;border:2px solid #fff;border-radius:6px}
+    body{overflow:auto}html{color-scheme:light}::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:#383838}::-webkit-scrollbar-track{background:#fff}
     .paper{max-width:1240px;margin:auto;padding:108px 24px 90px}
     .paper-header{display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px;margin-bottom:34px}
     .paper h1{margin:0;font:700 28px/1 NeueBit,Arial,sans-serif;text-transform:uppercase}
@@ -29,11 +29,7 @@
     .viewer-sidebar{width:220px;flex:none;overflow:auto;border-right:1px solid #d7e0e6;background:#fff;padding:16px 12px}
     .viewer-sidebar button{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;height:auto;margin:0 0 16px;padding:8px;border:1px solid transparent;border-radius:3px;background:#fff;color:#53616d;font-size:12px;cursor:pointer}.viewer-sidebar button canvas{display:block;width:min(100%,124px);height:auto;min-height:130px;box-shadow:0 0 0 1px #e0e5e9;background:#fff}.viewer-sidebar button span{display:block;text-align:center}
     .viewer-sidebar button[aria-current=true]{background:#e8efff;border-color:#96b4ef;color:#205bda;font-weight:700}
-    .viewer-scroll{flex:1;min-width:0;overflow:auto;background:#fff;scrollbar-color:#b9c3cb #fff}
-    .viewer-sidebar{scrollbar-color:#b9c3cb #fff}
-    .viewer-scroll::-webkit-scrollbar,.viewer-sidebar::-webkit-scrollbar{width:10px;height:10px}
-    .viewer-scroll::-webkit-scrollbar-track,.viewer-sidebar::-webkit-scrollbar-track{background:#fff}
-    .viewer-scroll::-webkit-scrollbar-thumb,.viewer-sidebar::-webkit-scrollbar-thumb{background:#b9c3cb;border:2px solid #fff;border-radius:6px}
+    .viewer-scroll{flex:1;min-width:0;overflow:auto;background:#fff}
     .pages{display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px}
     .pdf-page{width:min(100%,794px);aspect-ratio:612/792;flex:none;background:#fff;box-shadow:0 0 0 1px #e2e7eb,0 8px 24px #1d2d3b12;overflow:hidden}
     .pdf-page canvas{display:block;width:100%;height:auto}
@@ -41,7 +37,7 @@
     @media(max-width:900px){.paper-header{grid-template-columns:1fr;gap:20px}.viewer-sidebar{width:130px}.viewer-sidebar button canvas{min-height:90px}}
     @media(max-width:600px){.paper{padding:105px 20px 55px}.paper-header p{font-size:24px}.viewer-sidebar,.viewer-title{display:none}.viewer-toolbar{justify-content:center}.viewer{min-height:440px}.pages{padding:12px;gap:14px}}
   </style>
-</head>
+<link rel="stylesheet" href="/outer-scrollbar.css"></head>
 <body>
   <main class="paper">
     <header class="paper-header">
@@ -223,5 +219,5 @@
       console.error(error);
     }
   </script>
-</body>
+<script src="/outer-scrollbar.js" defer></script></body>
 </html>

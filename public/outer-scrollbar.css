@@ -1,0 +1,24 @@
+/* Short, draggable page scrollbar. PDF viewer panels keep the Litepaper scrollbar. */
+html { scrollbar-width: none; }
+html::-webkit-scrollbar,
+body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+.outer-scrollbar {
+  position: fixed;
+  z-index: 100;
+  inset: 0 0 0 auto;
+  width: 12px;
+  background: #fff;
+  cursor: pointer;
+  touch-action: none;
+}
+.outer-scrollbar[hidden] { display: none; }
+.outer-scrollbar__thumb {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  width: 8px;
+  height: 140px;
+  background: #383838;
+  cursor: grab;
+}
+.outer-scrollbar__thumb:active { cursor: grabbing; }
